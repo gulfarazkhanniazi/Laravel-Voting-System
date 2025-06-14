@@ -36,16 +36,16 @@
         <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
       <form action="#">
         <div class="input-box">
-          <input type="text" placeholder="Enter your name">
+          <input type="text" placeholder="Enter your name" required>
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Enter your email">
+          <input type="text" placeholder="Enter your email" required>
         </div>
         <div class="input-box message-box">
-          <textarea name="" id="" placeholder="Enter your message"></textarea>
+          <textarea name="" id="" placeholder="Enter your message" required></textarea>
         </div>
         <div class="button">
-          <input type="button" value="Send Now" >
+          <input type="submit" value="Send Now" >
         </div>
       </form>
     </div>

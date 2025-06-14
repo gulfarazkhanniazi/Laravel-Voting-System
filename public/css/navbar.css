@@ -33,7 +33,7 @@
   width: 100%;
   padding: 25px 0;
   transition: all 0.3s ease;
-  background: #1b1b1b;
+  /* background: #1b1b1b; */
   z-index: 20;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;

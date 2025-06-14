@@ -35,7 +35,7 @@
         <div class="card">
          <div class="content">
            <div class="img">
-            <img src="images/img3.jpg" alt="">
+            <img src="{{ asset('images/yasir.jpeg') }}" alt="Image">
            </div>
            <div class="details">
              <div class="name">Yasir Ali Khan</div>
@@ -50,64 +50,12 @@
          </div>
         </div>
       </div>
-      <div class="cards">
-        <div class="card">
-         <div class="content">
-           <div class="img">
-             <img src="images/img4.jpg" alt="">
-           </div>
-           <div class="details">
-             <div class="name">Appolo Reef</div>
-             <div class="job">Web Designer</div>
-           </div>
-           <div class="media-icons">
-             <a href="#"><i class="fab fa-facebook-f"></i></a>
-             <a href="#"><i class="fab fa-twitter"></i></a>
-             <a href="#"><i class="fab fa-instagram"></i></a>
-             <a href="#"><i class="fab fa-youtube"></i></a>
-           </div>
-         </div>
-        </div>
-        <div class="card">
-         <div class="content">
-           <div class="img">
-             -<img src="images/img5.jpg" alt="">
-           </div>
-           <div class="details">
-             <div class="name">Adrina Calvo</div>
-             <div class="job">UI Designer</div>
-           </div>
-           <div class="media-icons">
-             <a href="#"><i class="fab fa-facebook-f"></i></a>
-             <a href="#"><i class="fab fa-twitter"></i></a>
-             <a href="#"><i class="fab fa-instagram"></i></a>
-             <a href="#"><i class="fab fa-youtube"></i></a>
-           </div>
-         </div>
-        </div>
-        <div class="card">
-         <div class="content">
-           <div class="img">
-             <img src="images/img6.jpeg" alt="">
-           </div>
-           <div class="details">
-             <div class="name">Nicole Lewis</div>
-             <div class="job">Web Devloper</div>
-           </div>
-           <div class="media-icons">
-             <a href="#"><i class="fab fa-facebook-f"></i></a>
-             <a href="#"><i class="fab fa-twitter"></i></a>
-             <a href="#"><i class="fab fa-instagram"></i></a>
-             <a href="#"><i class="fab fa-youtube"></i></a>
-           </div>
-         </div>
-        </div>
-      </div>
+      <div class="cards"></div>
     </div>
-    <div class="button">
+    <!-- <div class="button">
       <label for="one" class=" active one"></label>
       <label for="two" class="two"></label>
-    </div>
+    </div> -->
   </div>
 </body>
 </html>
