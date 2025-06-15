@@ -179,3 +179,31 @@
     font-size: 27px;
   }
 }
+
+
+.user-menu {
+  position: relative;
+}
+.user-menu .dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.user-menu .dropdown-item {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #00bcd4;
+}
+.user-menu .dropdown-item:hover {
+  background: #02cfea;
+}

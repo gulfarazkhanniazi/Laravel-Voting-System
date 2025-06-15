@@ -22,18 +22,24 @@
       </div>
       <div class="form-content">
         <h2>LOGIN</h2>
-        <form>
-          <div class="input-field">
-            <input type="text" required />
-            <label>Email</label>
-          </div>
-          <div class="input-field">
-            <input type="password" required />
-            <label>Password</label>
-          </div>
-          <a href="#" class="forgot-pass-link">Forgot password?</a>
-          <button type="submit">Log In</button>
-        </form>
+        <form method="POST" action="{{ route('login') }}">
+  @csrf
+  <div class="input-field">
+    <input type="text" name="email" value="{{ old('email') }}" required />
+    <label>Email</label>
+  </div>
+  <div class="input-field">
+    <input type="password" name="password" required />
+    <label>Password</label>
+  </div>
+
+  @if(session('login_error'))
+    <p class="error">{{ session('login_error') }}</p>
+  @endif
+
+  <button type="submit">Log In</button>
+</form>
+
         <div class="bottom-link">
           Don't have an account?
           <a href="#" id="signup-link">Signup</a>
@@ -45,21 +51,36 @@
     <div class="form-box signup">
       <div class="form-content">
         <h2>SIGNUP</h2>
-        <form>
-          <div class="input-field">
-            <input type="text" required />
-            <label>Enter your email</label>
-          </div>
-          <div class="input-field">
-            <input type="password" required />
-            <label>Create password</label>
-          </div>
-          <div class="policy-text">
-            <input type="checkbox" id="policy" required/>
-            <label for="policy">I agree the <a href="#">Terms & Conditions</a></label>
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
+        <form method="POST" action="{{ route('register') }}">
+  @csrf
+  <div class="input-field">
+    <input type="text" name="name" value="{{ old('name') }}" required />
+    <label>Enter your name</label>
+  </div>
+  <div class="input-field">
+    <input type="text" name="email" value="{{ old('email') }}" required />
+    <label>Enter your email</label>
+  </div>
+  <div class="input-field">
+    <input type="text" name="cnic" value="{{ old('cnic') }}" required />
+    <label>Enter your cnic</label>
+  </div>
+  <div class="input-field">
+    <input type="password" name="password" required />
+    <label>Create password</label>
+  </div>
+  <div class="policy-text">
+    <input type="checkbox" id="policy" required />
+    <label for="policy">I agree the <a href="#">Terms & Conditions</a></label>
+  </div>
+
+  @if ($errors->any())
+    <p class="error">{{ $errors->first() }}</p>
+  @endif
+
+  <button type="submit">Sign Up</button>
+</form>
+
         <div class="bottom-link">
           Already have an account?
           <a href="#" id="login-link">Login</a>

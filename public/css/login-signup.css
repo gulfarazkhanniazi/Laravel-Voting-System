@@ -192,3 +192,9 @@ body.show-signup .form-popup .signup {
     padding: 30px 20px;
   }
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 5px 0 10px 0;
+}
