@@ -14,3 +14,6 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('login-signup');
 });
+Route::get('/candidates', function () {
+    return view('candidates');
+});
