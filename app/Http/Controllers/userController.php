@@ -11,26 +11,26 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        // Validate the request
+        // Validate input
         $validated = $request->validate([
             'name' => 'required|min:3',
             'cnic' => 'required|numeric|digits:13|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5',
-            'role' => 'user',
         ]);
 
-        // Create the user
+        // Create user with default role
         $user = User::create([
             'name' => $validated['name'],
             'cnic' => $validated['cnic'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'role' => 'user',
         ]);
 
         Auth::login($user);
-        
-        // Return a response
+        session(['role' => $user->role]);
+
         return redirect('/')->with('success', 'Registered & logged in!');
     }
 
@@ -48,14 +48,17 @@ class UserController extends Controller
         }
 
         Auth::login($user);
+        session(['role' => $user->role]);
+
         return redirect('/')->with('success', 'Login successful');
     }
 
     public function logout(Request $request)
     {
-        Auth::logout(); // Logs out the user
-        $request->session()->invalidate();       // Clears session data
-        $request->session()->regenerateToken();  // Prevents CSRF issues
+        Auth::logout();
+        session()->forget('role');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect('/login');
     }

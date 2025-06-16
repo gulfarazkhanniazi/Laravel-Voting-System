@@ -9,120 +9,103 @@
 </head>
 <body>
     <x-navbar />
-    <div class="cardbody">
-<div class="wrapper" id="testimonial-wrapper">
-    <!-- Cards will be injected here -->
-  </div>
-</div>
-  <script>
-  const testimonials = [
-    {
-      name: "Alex Smith",
-      party: "Future Vision Party",
-      slogan: "Innovation for All",
-      symbol: "Laptop",
-      stars: 2,
-      image: "https://t3.ftcdn.net/jpg/06/99/46/60/360_F_699466075_DaPTBNlNQTOwwjkOiFEoOvzDV0ByXR9E.jpg",
-      text: "Committed to a better digital tomorrow through inclusive tech policies."
-    },
-    {
-      name: "Steven Chris",
-      party: "Voice of Youth",
-      slogan: "Empowering Every Voice",
-      symbol: "Microphone",
-      image: "https://www.shutterstock.com/image-photo/portrait-smiling-african-american-student-600nw-1194497215.jpg",
-      text: "Advocating freedom of speech and stronger digital rights for youth."
-    },
-    {
-      name: "Kristina Bellis",
-      party: "People First Alliance",
-      slogan: "Unity and Prosperity",
-      symbol: "Handshake",
-      image: "https://www.shutterstock.com/image-photo/smiling-african-american-millennial-businessman-600nw-1437938108.jpg",
-      text: "Focused on equality, small business growth, and transparent governance."
-    },  
-    {
-      name: "Alex Smith",
-      party: "Future Vision Party",
-      slogan: "Innovation for All",
-      symbol: "Laptop",
-      stars: 2,
-      image: "https://t3.ftcdn.net/jpg/06/99/46/60/360_F_699466075_DaPTBNlNQTOwwjkOiFEoOvzDV0ByXR9E.jpg",
-      text: "Committed to a better digital tomorrow through inclusive tech policies."
-    },
-    {
-      name: "Steven Chris",
-      party: "Voice of Youth",
-      slogan: "Empowering Every Voice",
-      symbol: "Microphone",
-      image: "https://www.shutterstock.com/image-photo/portrait-smiling-african-american-student-600nw-1194497215.jpg",
-      text: "Advocating freedom of speech and stronger digital rights for youth."
-    },
-    {
-      name: "Kristina Bellis",
-      party: "People First Alliance",
-      slogan: "Unity and Prosperity",
-      symbol: "Handshake",
-      image: "https://www.shutterstock.com/image-photo/smiling-african-american-millennial-businessman-600nw-1437938108.jpg",
-      text: "Focused on equality, small business growth, and transparent governance."
-    },
-    {
-      name: "Alex Smith",
-      party: "Future Vision Party",
-      slogan: "Innovation for All",
-      symbol: "Laptop",
-      stars: 2,
-      image: "https://t3.ftcdn.net/jpg/06/99/46/60/360_F_699466075_DaPTBNlNQTOwwjkOiFEoOvzDV0ByXR9E.jpg",
-      text: "Committed to a better digital tomorrow through inclusive tech policies."
-    },
-    {
-      name: "Steven Chris",
-      party: "Voice of Youth",
-      slogan: "Empowering Every Voice",
-      symbol: "Microphone",
-      image: "https://www.shutterstock.com/image-photo/portrait-smiling-african-american-student-600nw-1194497215.jpg",
-      text: "Advocating freedom of speech and stronger digital rights for youth."
-    },
-    {
-      name: "Kristina Bellis",
-      party: "People First Alliance",
-      slogan: "Unity and Prosperity",
-      symbol: "Handshake",
-      image: "https://www.shutterstock.com/image-photo/smiling-african-american-millennial-businessman-600nw-1437938108.jpg",
-      text: "Focused on equality, small business growth, and transparent governance."
-    }
-  ];
 
-  const wrapper = document.getElementById('testimonial-wrapper');
+    <!-- Display Success or Error Message -->
+    @if (session('success'))
+        <div style="text-align: center; color: green; margin: 10px 0;">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div style="text-align: center; color: red; margin: 10px 0;">
+            {{ session('error') }}
+        </div>
+    @endif
 
-  testimonials.forEach((t, index) => {
-  const box = document.createElement('div');
-  box.className = 'box';
-  box.innerHTML = `
-    <i class="fas fa-quote-left quote"></i>
-    <p>${t.text}</p>
-    <div class="content">
-      <div class="info">
-        <div class="name">${t.name}</div>
-        <div class="party"><strong>Party:</strong> ${t.party}</div>
-        <div class="slogan"><strong>Slogan:</strong> "${t.slogan}"</div>
-        <div class="symbol"><strong>Intikhabi Nishaan:</strong> ${t.symbol}</div>
-      </div>
-      <div class="image">
-        <img src="${t.image}" alt="">
-      </div>
+    <!-- Add Candidate Button (admin only) -->
+    @auth
+        @if(auth()->user()->role === 'admin')
+            <div style="text-align: center;">
+                <button onclick="toggleForm()" class="add-candidate">
+                    Add Candidate
+                </button>
+            </div>
+        @endif
+    @endauth
+
+    <!-- Candidate Add Form -->
+    <div class="candidate-form-wrapper" id="candidateForm" style="display: none;">
+        <form action="{{ route('add') }}" method="POST" class="candidate-form">
+            @csrf
+            <div class="form-row-alt">
+                <div class="form-field">
+                    <input type="text" name="name" required value="{{ old('name') }}">
+                    <label>Candidate Name</label>
+                    @error('name')
+                        <span style="color: red;">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-field">
+                    <input type="text" name="party" required value="{{ old('party') }}">
+                    <label>Candidate Party</label>
+                    @error('party')
+                        <span style="color: red;">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-row-alt">
+                <div class="form-field">
+                    <input type="text" name="symbol" required value="{{ old('symbol') }}">
+                    <label>Election Symbol</label>
+                    @error('symbol')
+                        <span style="color: red;">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-field">
+                    <input type="text" name="slogan" required value="{{ old('slogan') }}">
+                    <label>Slogan</label>
+                    @error('slogan')
+                        <span style="color: red;">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="submit-btn-alt">
+                <button type="submit">Add Candidate</button>
+            </div>
+        </form>
     </div>
-  `;
 
-  wrapper.appendChild(box);
+    <!-- Candidates Cards -->
+    <div class="cardbody">
+        <div class="wrapper" id="testimonial-wrapper">
+            @if($candidates->count())
+                @foreach ($candidates as $candidate)
+                    <div class="box fade-in">
+                        <x-candidate-card :candidate="$candidate" />
+                    </div>
+                @endforeach
+            @else
+                <p style="text-align: center; color: gray;">No candidates available.</p>
+            @endif
+        </div>
+    </div>
 
-  // Trigger fade-in after slight delay to allow DOM to render
-  setTimeout(() => {
-    box.classList.add('fade-in');
-  }, 100); // You can stagger with index * 200 if needed
-});
+    <script>
+        // Fade-in effect for cards
+        document.addEventListener("DOMContentLoaded", () => {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.classList.add('fade-in');
+                }, index * 200);
+            });
+        });
 
-</script>
-
+        // Toggle Add Form visibility
+        function toggleForm() {
+            const form = document.getElementById('candidateForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>

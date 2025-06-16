@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CandidateController;
 
 Route::get('/', function () {
     return view('home');
@@ -15,10 +16,11 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('login-signup');
 });
-Route::get('/candidates', function () {
-    return view('candidates');
-});
 
-Route::post('/login', [userController::class, 'login'])->name('login');
-Route::post('/register', [userController::class, 'register'])->name('register');
-Route::post('/logout', [userController::class, 'logout'])->name('logout');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
+Route::post('/candidates', [CandidateController::class, 'add'])->name('add');
+Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidate.destroy');
