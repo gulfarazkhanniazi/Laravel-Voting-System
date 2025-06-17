@@ -69,6 +69,15 @@
                     @enderror
                 </div>
             </div>
+            <div class="form-row-alt">
+                <div class="form-field">
+                    <input type="text" name="image" required value="{{ old('image') }}">
+                    <label>Image URL</label>
+                    @error('image')
+                        <span style="color: red;">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
             <div class="submit-btn-alt">
                 <button type="submit">Add Candidate</button>
             </div>
@@ -80,9 +89,7 @@
         <div class="wrapper" id="testimonial-wrapper">
             @if($candidates->count())
                 @foreach ($candidates as $candidate)
-                    <div class="box fade-in">
                         <x-candidate-card :candidate="$candidate" />
-                    </div>
                 @endforeach
             @else
                 <p style="text-align: center; color: gray;">No candidates available.</p>

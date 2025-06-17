@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Candidate extends Model
 {
-    protected $fillable = ['name', 'party', 'symbol', 'slogan'];
+    protected $fillable = ['name', 'party', 'symbol', 'slogan', 'image'];
 }

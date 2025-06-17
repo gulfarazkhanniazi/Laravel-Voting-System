@@ -25,6 +25,7 @@ class CandidateController extends Controller
             'party' => 'required|string|min:3',
             'symbol' => 'required|string',
             'slogan' => 'required|string|min:3',
+            'image' => 'required|string|url',
         ]);
 
         Candidate::create($data);
