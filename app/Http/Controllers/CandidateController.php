@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\Election;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

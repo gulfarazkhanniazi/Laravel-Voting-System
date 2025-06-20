@@ -10,6 +10,9 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+body{
+  background-color: #00bcd4;
+}
 
 ::selection {
   color: #000;
@@ -309,4 +312,206 @@ a{
 
 
 
-/********************************           Cards CSS                     ********************************/
+/********************************           Voting Card CSS                     ********************************/
+.vc-body {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom, #68Eacc 0%, #497BE8 100%);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  max-width: 350px;
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  min-height: 25rem;
+  min-width: 20rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card .title {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.card .content {
+  margin-top: 20px;
+}
+
+.alert.success {
+  color: green;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.alert.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.box-wrapper {
+  margin-bottom: 10px;
+}
+
+/* Style the visible radio and label together */
+.box-wrapper input[type="radio"] {
+  accent-color: #00bcd4;
+  transform: scale(1.2);
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.box-wrapper label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  background: #f2f2f2;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.box-wrapper label:hover {
+  background: #e0f7fa;
+}
+
+.box-wrapper input[type="radio"]:checked + label {
+  background: #b2ebf2;
+  border: 1px solid #00bcd4;
+}
+
+/* Vote and delete buttons */
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vote-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.vote-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.delete-form {
+  margin-top: 10px;
+}
+
+.elections-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+::selection {
+  background: #d5bbf7;
+}
+
+/***************************************************************************************************************/
+
+.candidate-form-wrapper {
+  background: #fff;
+  padding: 25px 40px;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+.candidate-form .form-row-alt {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.candidate-form .form-field {
+  flex: 1;
+  position: relative;
+}
+
+.candidate-form .form-field input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 10px 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.candidate-form .form-field input:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+.candidate-form .form-field label {
+  position: absolute;
+  left: 5px;
+  bottom: 10px;
+  color: #888;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.candidate-form .form-field input:focus ~ label,
+.candidate-form .form-field input:valid ~ label {
+  transform: translateY(-20px);
+  font-size: 13px;
+  color: #00bcd4;
+}
+
+.submit-btn-alt {
+  text-align: center;
+}
+
+.submit-btn-alt button, .add-candidate {
+  padding: 10px 25px;
+  background: linear-gradient(115deg, #56d8e4, #56d8e4);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.submit-btn-alt button:hover, .add-candidate {
+  background: linear-gradient(115deg, #00bcd4, #56d8e4);
+}

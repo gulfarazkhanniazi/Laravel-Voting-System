@@ -21,4 +21,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function votedElections()
+    {
+        return $this->belongsToMany(Election::class);
+    }
+
 }
