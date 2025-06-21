@@ -102,7 +102,7 @@
 
   </div>
 </section>
-<script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+<!-- <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script> -->
 <!-- <script>
   const boxes = document.querySelectorAll('.testimonial-box');
 

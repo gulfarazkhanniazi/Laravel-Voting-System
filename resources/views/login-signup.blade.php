@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ asset('css/login-signup.css') }}">
   <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 </head>
-<body class="show-popup">
+<body class="show-popup {{ $errors->has('name') || $errors->has('email') || $errors->has('cnic') || $errors->has('password') ? 'show-signup' : '' }}">
   <x-navbar />
 
   <div class="blur-bg-overlay"></div>

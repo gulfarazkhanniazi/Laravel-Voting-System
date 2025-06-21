@@ -5,6 +5,7 @@
     <title>My Laravel App</title>
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <div class="title">Secure & Transparent Online Voting</div>
         <div class="sub_title">Empowering organizations, institutions, and communities with a safe, real-time digital voting platform.</div>
         <div class="btns">
-            <button><a href="#">Start Voting</a></button>
+            <button><a href="#voting-cards">Start Voting</a></button>
             <button><a href="/contact">Contact Us</a></button>
         </div>
     </div>
@@ -23,7 +24,7 @@
     @auth
         @if(auth()->user()->role === 'admin')
             <!-- Add Election Button -->
-            <div style="text-align: center;">
+            <div style="text-align: center;" id="voting-cards" >
                 <button onclick="toggleForm()" class="add-candidate">Add New Election</button>
             </div>
 

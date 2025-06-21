@@ -313,6 +313,21 @@ a{
 
 
 /********************************           Voting Card CSS                     ********************************/
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 5px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .vc-body {
   display: flex;
   justify-content: center;
@@ -328,8 +343,8 @@ a{
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-  min-height: 25rem;
-  min-width: 20rem;
+  min-height: 28rem;
+  min-width: 23rem;
   position: relative;
   overflow: hidden;
 }

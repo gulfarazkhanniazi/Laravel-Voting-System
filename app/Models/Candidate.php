@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Election;
 
 class Candidate extends Model
 {
@@ -10,7 +11,9 @@ class Candidate extends Model
 
     public function elections()
     {
-        return $this->belongsToMany(Election::class)->withPivot('votes')->withTimestamps();
+        return $this->belongsToMany(Election::class)
+                    ->withPivot('votes')
+                    ->using(CandidateElection::class);
     }
 
 }

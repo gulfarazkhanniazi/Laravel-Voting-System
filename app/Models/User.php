@@ -14,17 +14,20 @@ class User extends Authenticatable
         'email',
         'password',
         'cnic',
-        'role', // ← add this
+        'role',
     ];
-
 
     protected $hidden = [
         'password',
     ];
 
-    public function votedElections()
+    public function elections()
     {
-        return $this->belongsToMany(Election::class);
+        return $this->belongsToMany(Election::class, 'election_user')->withTimestamps();
     }
 
+    public function hasVotedIn($electionId)
+    {
+        return $this->elections()->where('election_id', $electionId)->exists();
+    }
 }

@@ -32,4 +32,5 @@ Route::delete('/elections/{id}', [ElectionController::class, 'destroy'])->name('
 Route::post('/election/store', [ElectionController::class, 'store'])->name('election.store');
 
 
-Route::post('/vote', [VoteController::class, 'store'])->name('vote.store');
+
+Route::post('/vote', [VoteController::class, 'store'])->name('vote');
