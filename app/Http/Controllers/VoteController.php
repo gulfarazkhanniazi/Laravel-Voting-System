@@ -18,12 +18,10 @@ class VoteController extends Controller
     {
         Log::info('Vote attempt', $request->all());
 
-        // Manual validation
         if (!$request->has(['election_id', 'candidate_id'])) {
             return redirect()->back()->with('error', 'Missing parameters');
         }
 
-        // Verify user is authenticated
         if (!auth()->check()) {
             return redirect()->back()->with('error', 'You must be logged in to vote.');
         }
@@ -31,13 +29,11 @@ class VoteController extends Controller
         try {
             DB::beginTransaction();
 
-            // Check if election exists
             $election = Election::find($request->election_id);
             if (!$election) {
                 return redirect()->back()->with('error', 'Election not found');
             }
 
-            // Check if candidate belongs to election
             $candidateExists = DB::table('candidate_election')
                 ->where('election_id', $request->election_id)
                 ->where('candidate_id', $request->candidate_id)
@@ -47,7 +43,6 @@ class VoteController extends Controller
                 return redirect()->back()->with('error', 'Invalid candidate');
             }
 
-            // Check if user already voted
             $alreadyVoted = DB::table('election_user')
                 ->where('user_id', auth()->id())
                 ->where('election_id', $request->election_id)
@@ -57,7 +52,6 @@ class VoteController extends Controller
                 return redirect()->back()->with('error', 'You have already voted in this election');
             }
 
-            // Record user vote
             DB::table('election_user')->insert([
                 'user_id' => auth()->id(),
                 'election_id' => $request->election_id,
@@ -65,7 +59,6 @@ class VoteController extends Controller
                 'updated_at' => now()
             ]);
 
-            // Increment candidate's vote count
             DB::table('candidate_election')
                 ->where('election_id', $request->election_id)
                 ->where('candidate_id', $request->candidate_id)

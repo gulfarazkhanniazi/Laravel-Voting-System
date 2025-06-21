@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>My Laravel App</title>
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/candidates.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
+
 <body>
     <x-navbar />
 
-    <!-- Display Success or Error Message -->
     @if (session('success'))
         <div style="text-align: center; color: green; margin: 10px 0;">
             {{ session('success') }}
@@ -22,9 +23,8 @@
         </div>
     @endif
 
-    <!-- Add Candidate Button (admin only) -->
     @auth
-        @if(auth()->user()->role === 'admin')
+        @if (auth()->user()->role === 'admin')
             <div style="text-align: center;">
                 <button onclick="toggleForm()" class="add-candidate">
                     Add Candidate
@@ -33,7 +33,6 @@
         @endif
     @endauth
 
-    <!-- Candidate Add Form -->
     <div class="candidate-form-wrapper" id="candidateForm" style="display: none;">
         <form action="{{ route('add') }}" method="POST" class="candidate-form">
             @csrf
@@ -84,12 +83,11 @@
         </form>
     </div>
 
-    <!-- Candidates Cards -->
     <div class="cardbody">
         <div class="wrapper" id="testimonial-wrapper">
-            @if($candidates->count())
+            @if ($candidates->count())
                 @foreach ($candidates as $candidate)
-                        <x-candidate-card :candidate="$candidate" />
+                    <x-candidate-card :candidate="$candidate" />
                 @endforeach
             @else
                 <p style="text-align: center; color: gray;">No candidates available.</p>
@@ -98,7 +96,6 @@
     </div>
 
     <script>
-        // Fade-in effect for cards
         document.addEventListener("DOMContentLoaded", () => {
             const boxes = document.querySelectorAll('.box');
             boxes.forEach((box, index) => {
@@ -108,11 +105,11 @@
             });
         });
 
-        // Toggle Add Form visibility
         function toggleForm() {
             const form = document.getElementById('candidateForm');
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
         }
     </script>
 </body>
+
 </html>

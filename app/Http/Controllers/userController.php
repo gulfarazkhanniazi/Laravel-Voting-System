@@ -11,7 +11,6 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        // Validate input
         $validated = $request->validate([
             'name' => 'required|min:3',
             'cnic' => 'required|numeric|digits:13|unique:users',
@@ -19,7 +18,6 @@ class UserController extends Controller
             'password' => 'required|min:5',
         ]);
 
-        // Create user with default role
         $user = User::create([
             'name' => $validated['name'],
             'cnic' => $validated['cnic'],

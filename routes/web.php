@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', [ElectionController::class, 'showHome'])->name('home');
 
@@ -34,3 +35,4 @@ Route::post('/election/store', [ElectionController::class, 'store'])->name('elec
 
 
 Route::post('/vote', [VoteController::class, 'store'])->name('vote');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
