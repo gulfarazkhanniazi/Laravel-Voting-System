@@ -31,7 +31,7 @@ A web-based voting platform built using Laravel, allowing users to register, vie
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/your-username/laravel-voting-system.git
+   git clone https://github.com/gulfarazkhanniazi/Laravel-Voting-System.git
    cd laravel-voting-system
 
 2. **Install PHP Dependencies**
