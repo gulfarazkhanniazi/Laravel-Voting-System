@@ -33,3 +33,46 @@ A web-based voting platform built using Laravel, allowing users to register, vie
    ```bash
    git clone https://github.com/your-username/laravel-voting-system.git
    cd laravel-voting-system
+
+2. **Install PHP Dependencies**
+   ```bash
+   composer install
+
+3. **Create .env File**
+   ```bash
+   cp .env.example .env
+
+4. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+
+5. **Configure Database**
+   ```bash
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=voting_system
+   DB_USERNAME=root
+   DB_PASSWORD=
+
+6. **Run Migrations**
+   ```bash
+   Run Migrations
+
+7. **Configure Mail in .env**
+   ```bash
+   MAIL_MAILER=smtp
+   MAIL_HOST=smtp.gmail.com
+   MAIL_PORT=587
+   MAIL_USERNAME=your_email@gmail.com
+   MAIL_PASSWORD=your_generated_app_password
+   MAIL_ENCRYPTION=tls
+   MAIL_FROM_ADDRESS=your_email@gmail.com
+   MAIL_FROM_NAME="Laravel Voting System"
+
+8. **php artisan serve**
+   ```bash
+   php artisan serve
+
+
+-- Happy pushing to GitHub! 🚀
